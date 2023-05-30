@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #miCanvas{
+            border:  dotted 5px yellow;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Graficas 2D con HTML y Javascript</h1>
+    <canvas id="miCanvas" width="500px" height="300px">Tu navegador no soporta </canvas>
+    <script>
+        window.onload = function()
+        {
+            var canvas = document.getElementById("miCanvas")
+
+            const BASE = 500;
+            const ALTURA = 300;
+
+            canvas.width = BASE
+            canvas.height = ALTURA
+
+            if(canvas && canvas.getContext)
+            {
+                var ctx = canvas.getContext("2d")
+                if (ctx){
+                    //alert("Bienvenido al canvas")
+                    ctx.fillStyle = 'yellow'
+                    ctx.strokeStyle = '#ff0000'
+                    ctx.lineWidth = 5;
+                    
+                    //rectangulo que cubra medio canvas
+                    ctx.fillStyle = 'pink'
+                    ctx.fillRect(BASE/2, 0,BASE/2,ALTURA);
+                    
+                    ctx.fillRect(50,50,100,100)
+                    //dibujar rectangulo
+                    ctx.fillStyle =("rgba(250,0,0,0.5)");
+                    ctx.fillRect(200,50,100,100);
+                    ctx.strokeRect(200,50,100,100);
+                }
+                else{
+                    alert("Error al crear el contexto")
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #miCanvas{
+            border:  dotted 5px yellow;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Graficas 2D con HTML y Javascript</h1>
+    <canvas id="miCanvas" width="500px" height="300px">Tu navegador no soporta </canvas>
+    <script>
+        window.onload = function()
+        {
+            var canvas = document.getElementById("miCanvas")
+
+            const BASE = 500;
+            const ALTURA = 300;
+
+            canvas.width = BASE
+            canvas.height = ALTURA
+
+            if(canvas && canvas.getContext)
+            {
+                var ctx = canvas.getContext("2d")
+                if (ctx){
+                    //alert("Bienvenido al canvas")
+                    
+                    // color y ancho de lineas
+                    ctx.strokeStyle = "black";
+                    ctx.lineWidth = 10;
+
+                    //Dibujamos una linea
+                    ctx.beginPath(); // iniciamos linea e nuevo trazo
+                    ctx.moveTo(0,0);
+                    ctx.lineTo(BASE, ALTURA)
+                    ctx.stroke();
+
+                    //Dibujamos una linea
+                    ctx.beginPath(); // iniciamos linea e nuevo trazo
+                    ctx.moveTo(0,ALTURA);
+                    ctx.lineTo(BASE, 0)
+                    ctx.stroke();
+
+                    // otro dibujo
+                    ctx.strokeStyle = "yellow"
+                    ctx.fillStyle = "yellow"
+                    ctx.beginPath(); 
+                    ctx.moveTo(0,ALTURA/2);
+                    ctx.lineTo(BASE/2,0);
+                    ctx.lineTo(base/2,ALTURA/2);
+                    ctx.fill();
+                    ctx.stroke();
+            }
+                else
+                {
+                    alert("Error al crear el contexto")
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>
